@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Mount tmpfs
+        run: mkdir -p node_modules && sudo mount -t tmpfs -o size=1G tmpfs $PWD/node_modules
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
